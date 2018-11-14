@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 check_makefile()
 {
     local fileList=$(ls)
@@ -42,7 +41,16 @@ check_src()
     done
     echo $exist;
 }
+create_makefile_header()
+{
+    echo "#\n# EPITECH PROJECT, 2018\n# ${USERNAME}\n# file description:\n# $1\n#"
+}
+create_makefile()
+{
+    local header=$(create_makefile_header $1)
 
+    echo -e $header
+}
 create_root() 
 {
     local makefileExist=$(check_makefile)
@@ -51,7 +59,7 @@ create_root()
 
     if [ $makefileExist == 0 ]
     then
-        echo "I am going to create a makefile"
+        create_makefile Makefile
     fi
     if [ $includeExist == 0 ]
     then
