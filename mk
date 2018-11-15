@@ -43,13 +43,23 @@ check_src()
 }
 create_makefile_header()
 {
-    echo "#\n# EPITECH PROJECT, 2018\n# ${USERNAME}\n# file description:\n# $1\n#"
+    echo "##\n## EPITECH PROJECT, 2018\n## ${USERNAME}\n## file description:\n## $1\n##\n\n"
+}
+create_makefile_variables()
+{
+    echo "NAME\t=\tcbinary\n\nSRC\t=\tmain.c \ \n\nOBJ\t=\t\$(SRC:.c=.o)\n\n"
+}
+create_makefile_rules()
+{
+    echo "all:\t\t\$(NAME)\n\n\$(NAME):\t\$(OBJ)\n\t\tcc \$(OBJ) -o \$(NAME) -I./include\n\nclean:\n\t\trm -rf \$(OBJ)\n\nfclean:\t\tclean\n\t\trm -rf$(NAME)\n\nre:\t\tfclean all\n\n.PHONY:\t\tall clean fclean re"
 }
 create_makefile()
 {
     local header=$(create_makefile_header $1)
+    local variables=$(create_makefile_variables)
+    local rules=$(create_makefile_rules)
 
-    echo -e $header
+    echo -e $header$variables$rules > Makefile
 }
 create_root() 
 {
