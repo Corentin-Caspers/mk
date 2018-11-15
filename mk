@@ -93,7 +93,7 @@ create_root()
     fi
     if [ $includeExist == 0 ]
     then
-        echo "I am going to create a include"
+        echo "I am going to create a Yaaay"
     fi
     if [ $srcExist == 0 ]
     then
