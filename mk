@@ -89,14 +89,19 @@ create_root()
 
     if [ $makefileExist == 0 ]
     then
+        echo "CREATING A NEW MAKEFILE"
         create_makefile Makefile
     fi
     if [ $includeExist == 0 ]
     then
+        echo "CREATING A INCLUDE DIRECTORY"
+        echo "CREATING A MAIN.H FILE"
         echo "I am going to create a Yaaay"
     fi
     if [ $srcExist == 0 ]
     then
+        echo "CREATING A SRC DIRECTORY"
+        echo "CREATING A MAIN.C FILE"
         create_src
     fi
 }
