@@ -61,7 +61,27 @@ create_makefile()
 
     echo -e $header$variables$rules > Makefile
 }
-create_root() 
+create_header()
+{
+    echo "/*\n** EPITECH PROJECT, 2018\n** ${USERNAME}\n** file description:\n** $1\n*/\n\n"
+}
+create_include()
+{
+    echo "#include \"$1.h\""
+}
+create_main()
+{
+    echo "int main(int ac, char **av, char **env)\n{\n\treturn (0);\n}\n"
+}
+create_src()
+{
+    local header=$(create_header main.c)
+    local include=$(create_include main)
+    local main=$(create_main)
+    mkdir src
+    echo -e "$header$include\n\n$main" > src/main.c
+}
+create_root()
 {
     local makefileExist=$(check_makefile)
     local includeExist=$(check_include)
@@ -77,7 +97,7 @@ create_root()
     fi
     if [ $srcExist == 0 ]
     then
-        echo "I am going to create a src"
+        create_src
     fi
 }
 
